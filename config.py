@@ -56,7 +56,8 @@ states = {
     "1": ["steer", "throttle", "speed", "angle_next_waypoint", "maneuver"],
     "2": ["steer", "throttle", "speed", "maneuver"],
     "3": ["steer", "throttle", "speed", "waypoints"],
-    "4": ["steer", "throttle", "speed", "angle_next_waypoint", "maneuver", "distance_goal"]
+    "4": ["steer", "throttle", "speed", "angle_next_waypoint", "maneuver", "distance_goal"],
+    "5": ["steer", "throttle", "rgb_camera"]
 }
 
 reward_params = {
@@ -287,6 +288,18 @@ _CONFIG_15 = {
     "wrappers": ["FrameSkip_3", "HistoryWrapperObsDict_5"]
 }
 
+_CONFIG_16 = {
+    "algorithm": "PPO",
+    "algorithm_params": algorithm_params["PPO"],
+    "state": states["5"],
+    "vae_model": "vae_64",
+    "action_smoothing": 0.75,
+    "reward_fn": "reward_fn5",
+    "reward_params": reward_params["reward_fn_5_default"],
+    "obs_res": (160, 80),
+    "seed": 100,
+    "wrappers": []
+}
 _CONFIG_BEST = {
     "algorithm": "SAC",
     "algorithm_params": algorithm_params["SAC_BEST"],
@@ -315,6 +328,7 @@ CONFIGS = {
     "13": _CONFIG_13,
     "14": _CONFIG_14,
     "15": _CONFIG_15,
+    "16": _CONFIG_16,
     "BEST": _CONFIG_BEST
 }
 CONFIG = None

@@ -329,6 +329,7 @@ class CarlaRouteEnv(gym.Env):
             elif self.action_space_type == "discrete":
                 steer, throttle = discrete_actions[action]
 
+
             self.vehicle.control.steer = smooth_action(self.vehicle.control.steer, steer, self.action_smoothing)
             self.vehicle.control.throttle = smooth_action(self.vehicle.control.throttle, throttle,
                                                           self.action_smoothing)
